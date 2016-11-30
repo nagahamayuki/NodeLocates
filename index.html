@@ -52,17 +52,20 @@
   });
 
   //マーカーの作成
-  var latlng, marker;
+  var latlng;
+  var marker = [];
+  var i = 0;
   socketio.on("Markers", function(data){
     if(data.lats == ""){
       return;
     }
     latlng = {lat: data.lats, lng: data.lngs};
-    //marker.setMap(null);
-    marker = new google.maps.Marker({
+    if(i > 0){ marker.setMap(null); }
+    marker[i] = new google.maps.Marker({
       map: map,
       position: latlng
     });
+    i++;
   });
 
   var snackbarContainer = document.querySelector('#demo-toast-example');
