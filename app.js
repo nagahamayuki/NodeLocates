@@ -8,7 +8,7 @@ server.on("request", function(req, res){
     res.write(data);
     res.end();
   });
-}).listen(1234);
+}).listen(process.env.PORT || 8000);
 
 
 var io = require("socket.io")(server);

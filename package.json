@@ -11,8 +11,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
-    "node": "4.4.7",
-    "npm":  "4.0.3"
+    "node": "v4.4.X",
+    "npm": "4.0.X"
   },
   "repository": {
     "type": "git",
