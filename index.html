@@ -60,7 +60,7 @@
       return;
     }
     latlng = {lat: data.lats, lng: data.lngs};
-    if(i > 0){ marker.setMap(null); }
+    if(i > 0){ marker[i - 1].setMap(null); }
     marker[i] = new google.maps.Marker({
       map: map,
       position: latlng
