@@ -22,4 +22,8 @@ io.on("connection", function(client){
     io.sockets.emit('Messages', data);
   });
 
+  client.on("panMaps", function(data){
+    io.sockets.emit('Markers', data);
+  });
+
 });

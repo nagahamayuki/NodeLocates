@@ -33,9 +33,10 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
+  var map;
   function initMap() {
     // Create a map object and specify the DOM element for display.
-    var map = new google.maps.Map(document.getElementById('map'), {
+    map = new google.maps.Map(document.getElementById('map'), {
       center: {lat: 33.5865606, lng: 130.3948272},
       scrollwheel: false,
       zoom: 8
@@ -44,9 +45,24 @@
 
   //var socketio = io.connect('http://localhost:8000');
   var socketio = io.connect();
+  /* リモートとローカルの変更箇所 */
+
   socketio.on("Messages", function(data){
-    //console.log(data.name + "さんが接続しました。");
     messageing(data);
+  });
+
+  //マーカーの作成
+  var latlng, marker;
+  socketio.on("Markers", function(data){
+    if(data.lats == ""){
+      return;
+    }
+    latlng = {lat: data.lats, lng: data.lngs};
+    //marker.setMap(null);
+    marker = new google.maps.Marker({
+      map: map,
+      position: latlng
+    });
   });
 
   var snackbarContainer = document.querySelector('#demo-toast-example');
