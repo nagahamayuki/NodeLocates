@@ -15,10 +15,7 @@ var io = require("socket.io")(server);
 io.on("connection", function(client){
 
   console.log("サーバーに接続されました。");
-
-  client.on('connectMessage', function() {
-		client.emit('messages', "hello");
-	});
+  client.emit('messages', "hello");
 
   client.on('disconnect', function(){
     console.log('接続を解除しました。');
