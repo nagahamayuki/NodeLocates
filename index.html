@@ -21,6 +21,7 @@
 
 
 <div id="map"></div>
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
   function initMap() {
     // Create a map object and specify the DOM element for display.
@@ -30,6 +31,12 @@
       zoom: 8
     });
   }
+
+  //var socketio = io.connect('http://localhost:8000');
+  var socketio = io.connect();
+  socketio.on("Messages", function(name){
+    console.log(name);
+  });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwnag6z-u5e-gXE5Ymzt9RLrHsXMIvkNU&callback=initMap" async defer></script>
 </body>

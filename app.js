@@ -14,10 +14,12 @@ server.on("request", function(req, res){
 var io = require("socket.io")(server);
 io.on("connection", function(client){
 
-  console.log("サーバーに接続されました。");
-
   client.on('disconnect', function(){
-    console.log('接続を解除しました。');
+    io.sockets.emit('Messages', "接続を解除しました。");
+  });
+
+  client.on("setStart", function(data){
+    io.sockets.emit('Messages', data.name + "さんが接続しました。");
   });
 
 });
