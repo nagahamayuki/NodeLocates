@@ -16,9 +16,8 @@ io.on("connection", function(client){
 
   console.log("サーバーに接続されました。");
 
-  client.on('message', function(msg) {
-		client.send(msg);
-		client.broadcast.emit('message', msg);
+  client.on('connectMessage', function() {
+		client.emit('messages', "hello");
 	});
 
   client.on('disconnect', function(){
