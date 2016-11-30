@@ -42,8 +42,8 @@
     });
   }
 
-  var socketio = io.connect('http://localhost:8000');
-  //var socketio = io.connect();
+  //var socketio = io.connect('http://localhost:8000');
+  var socketio = io.connect();
   socketio.on("Messages", function(data){
     //console.log(data.name + "さんが接続しました。");
     messageing(data);
