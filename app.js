@@ -12,7 +12,7 @@ server.on("request", function(req, res){
 
 
 var io = require("socket.io")(server);
-var socketClient = require('socket.io-client')(server);
+var socketClient = require('socket.io-client');
 io.on("connection", function(client){
 
   console.log("サーバーに接続されました。");
