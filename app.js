@@ -12,7 +12,6 @@ server.on("request", function(req, res){
 
 
 var io = require("socket.io")(server);
-var socketClient = require('socket.io-client');
 io.on("connection", function(client){
 
   console.log("サーバーに接続されました。");
@@ -21,21 +20,4 @@ io.on("connection", function(client){
     console.log('接続を解除しました。');
   });
 
-  client.on("publish", function(data){
-    console.log(data);
-    io.emit("publishMap", {lat: data.lat, lng: data.lng});
-  });
-
-  client.on("startSocket", function(e){
-    console.log(e);
-  })
-
-  client.on("stopSocket", function(e){
-    console.log(e);
-  })
-
-});
-
-socketClient.on("messages", function(client){
-  client.emit('messages', "hello");
 });
