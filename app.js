@@ -19,6 +19,7 @@ io.on("connection", function(client){
   });
 
   client.on("setStart", function(data){
+    console.log("1");
     io.sockets.emit('Messages', data);
   });
 
