@@ -33,8 +33,10 @@
   }
 
   var socket = io.connect();
-  socket.on('frontMsg', function(msg) {
-    console.log(msg);
+  socket.on('message', function(msg) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(msg));
+    document.body.appendChild(div);
   });
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAwnag6z-u5e-gXE5Ymzt9RLrHsXMIvkNU&callback=initMap" async defer></script>

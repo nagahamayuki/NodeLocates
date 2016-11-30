@@ -16,10 +16,10 @@ io.on("connection", function(client){
 
   console.log("サーバーに接続されました。");
 
-  client.on("deviceConnect", function(){
-    console.log("〜〜が接続");
-    client.emit("frontMsg", {some: 'data'});
-  });
+  client.on('message', function(msg) {
+		client.send(msg);
+		client.broadcast.emit('message', msg);
+	});
 
   client.on('disconnect', function(){
     console.log('接続を解除しました。');
