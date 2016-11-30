@@ -32,7 +32,7 @@
     });
   }
 
-  var socket = io();
+  var socket = io("https://nodelocates.herokuapp.com/");
   socket.on('news', function (data) {
     console.log(data);
   });
