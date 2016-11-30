@@ -15,11 +15,11 @@ var io = require("socket.io")(server);
 io.on("connection", function(client){
 
   client.on('disconnect', function(){
-    io.sockets.emit('Messages', "接続を解除しました。");
+    io.sockets.emit('Messages', false);
   });
 
   client.on("setStart", function(data){
-    io.sockets.emit('Messages', data.name + "さんが接続しました。");
+    io.sockets.emit('Messages', data);
   });
 
 });
