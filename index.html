@@ -58,9 +58,9 @@
     }
   }
 
-  var socketio = io.connect('http://localhost:8000');
+  //var socketio = io.connect('http://localhost:8000');
+  var socketio = io.connect();
   if(socketio){console.log(socketio);}
-  //var socketio = io.connect();
   /* リモートとローカルの変更箇所 */
 
   var username;
