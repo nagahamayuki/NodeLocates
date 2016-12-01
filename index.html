@@ -75,10 +75,11 @@
   socketio.on("Markers", function(data){
     latlng = {lat: data.lats, lng: data.lngs};
     if(i > 0){ marker[i - 1].setMap(null); }
+    if(i == 0){ console.log(username + "さんが位置情報共有を開始します。"); }
     marker[i] = new google.maps.Marker({
       map: map,
       position: latlng,
-      title: "No." + i + ": user:" + data.name
+      title: "No." + i + ": user: " + data.name
     });
     i++;
   });
