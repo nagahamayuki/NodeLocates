@@ -34,17 +34,33 @@
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
   var map;
+  var centerLatLng = {lat: 33.5865606, lng: 130.3948272};
   function initMap() {
     // Create a map object and specify the DOM element for display.
     map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 33.5865606, lng: 130.3948272},
+      center: centerLatLng,
       scrollwheel: false,
-      zoom: 12
+      zoom: 14
     });
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        map.setCenter(pos);
+      }, function() {
+        return;
+      });
+    } else {
+      return;
+    }
   }
 
-  //var socketio = io.connect('http://localhost:8000');
-  var socketio = io.connect();
+  var socketio = io.connect('http://localhost:8000');
+  if(socketio){console.log(socketio);}
+  //var socketio = io.connect();
   /* リモートとローカルの変更箇所 */
 
   var username;
