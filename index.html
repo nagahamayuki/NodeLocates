@@ -74,9 +74,6 @@
   var marker = [];
   var i = 0;
   socketio.on("Markers", function(data){
-    if(data.lats == ""){
-      return;
-    }
     latlng = {lat: data.lats, lng: data.lngs};
     if(i > 0){ marker[i - 1].setMap(null); }
     marker[i] = new google.maps.Marker({
